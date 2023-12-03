@@ -1,0 +1,135 @@
+@media (max-width: 767px) {
+
+    .container-common {
+        max-width: 728px;
+        margin: 0 auto;
+    }
+
+/* BEM block styles--------------------------------------------------------------------------- */
+
+/* form--- */
+    .form {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto auto;
+        column-gap: 20px;
+        row-gap: 15px;
+    }
+
+    .form__avatar {
+        grid-row: span 1;
+    }
+
+    .form__user-name {
+        font-size: 14px;
+    }
+
+    .form__symbol-counter {
+        font-size: 10px;
+        line-height: calc(17 / 14 * 100%);
+    }
+
+    .form__warning-desktop {
+        display: none;
+    }
+
+    .form__textarea {
+        grid-column: span 2;
+        padding: 17px 20px;
+        font-size: 16px;
+        min-height: 50px;
+        min-width: 100%;
+    }
+
+    .form__textarea::placeholder {
+        font-size: 14px;
+    }
+
+    .form__btn {
+        grid-column: span 2;
+        padding: 15px 107px;
+        font-size: 16px;
+        min-height: 50px;
+    }
+
+    .form__warning-mobile {
+        display: block;
+        grid-column: span 2;
+        color: #F00;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: calc(17 / 14 * 100%);
+        /* opacity: 0; */
+    }
+
+/* avatar--- */
+    .avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+/* aside-------------------------------------------------------------------------------------- */
+
+    .aside {
+        display: none;
+    }
+
+/* main--------------------------------------------------------------------------------------- */
+
+    .main__container {
+        margin: 0 10px 0 10px;
+    }
+
+/* main-block--------------------------------------------------------------------------------- */
+
+    .main-block {
+        width: 100%;
+    }
+
+    .main-block__content-row {
+        flex-wrap: wrap;
+    }
+
+    .main-block__item {
+        flex: 1 1 100%;
+    }
+
+    .main-block__content-row:not(:last-of-type) {
+        display: none;
+    }
+
+/* comments----------------------------------------------------------------------------------- */
+    
+    .comments__horizontal-line {
+        height: 2px;
+        margin-bottom: 14px;
+    }
+
+    .comments__item:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    .comments__btn {
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 319px) {
+
+    .container-common {
+        min-width: 320px;
+        margin: 0 auto;
+    }
+
+    .header {
+        width: 100%;
+        flex-grow: 1;
+    }
+
+    .main__container {
+        margin: 0 10px 0 10px;
+    }
+
+}

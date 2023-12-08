@@ -53,13 +53,6 @@ body {
     max-width: 688px;
 }
 
-.form__user-name {
-    color: #122ac0;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: calc(22 / 18 * 100%);
-}
-
 .form__symbol-counter {
     opacity: 0.4;
     font-size: 14px;
@@ -110,6 +103,7 @@ body {
     line-height: calc(22 / 18 * 100%);
     min-width: 213px;
     min-height: 61px;
+    cursor: pointer;
 }
 
 .form__warning-mobile {
@@ -122,6 +116,14 @@ body {
     object-fit: cover;
     width: 61px;
     height: 61px;
+}
+
+/* name--- */
+.name-user {
+    color: #122ac0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: calc(22 / 18 * 100%);
 }
 
 /* ------------------------------------------------------------------------------------------- */
@@ -159,8 +161,9 @@ body {
 
 .main__container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     margin-right: 129px;
+    align-self: stretch;
 }
 
 .main__aside {
@@ -231,6 +234,10 @@ body {
     margin-bottom: 25px;
 }
 
+.comments__form {
+    margin-bottom: 40px;
+}
+
 .comments__list-menu {
     display: flex;
     flex-wrap: wrap;
@@ -267,6 +274,81 @@ body {
     opacity: 1;
     border-bottom: 3px solid;
     padding-bottom: 2px;
+}
+
+.comment-in__new-comment {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    column-gap: 30px;
+    row-gap: 15px;
+    margin-bottom: 28px;
+}
+
+.comment-in__avatar {
+    grid-row: span 3;
+}
+
+.comment-in__user-name {
+    margin-right: 15px;
+}
+
+.comment-in__time {
+    opacity: 0.4;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: calc(17 / 14 * 100%);
+    white-space: nowrap;
+}
+
+.comment-in__buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.comment-in__counter-rating {
+    color: #8AC540;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.comment-in__btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    font-family: Inter;
+    opacity: 0.4;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: calc(22 / 18 * 100%);
+    cursor: pointer;
+}
+
+.comment-in__buttons-rating {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.comment-in__btn-rating {
+    background: rgba(0, 0, 0, 0.10);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: calc(22 / 18 * 100%);
+}
+
+.comment-in__btn-rating_change_increase {
+    color: #8AC540;
+}
+
+.comment-in__btn-rating_change_decrease {
+    color: #F00;
 }
 
 /* footer------------------------------------------------------------------------------------- */

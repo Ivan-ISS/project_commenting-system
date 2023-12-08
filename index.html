@@ -90,7 +90,7 @@
                             <form class="comments__form form">
                                 <img class="form__avatar avatar" src="images/png/avatar-maxim.png" alt="Avatar">
                                 <div class="form__signatures">
-                                    <span class="form__user-name">
+                                    <span class="form__user-name name-user">
                                         Максим Авдеенко
                                     </span>
                                     <span class="form__symbol-counter">
@@ -101,13 +101,16 @@
                                     Слишком длинное сообщение
                                 </span>
                                 <textarea class="form__textarea" type="text" maxlength="1000" rows="1" placeholder="Введите текст сообщения..."></textarea>
-                                <button class="form__btn" type="button" disabled>
+                                <button class="form__btn" type="button">
                                     Отправить
                                 </button>
                                 <span class="form__warning-mobile">
                                     Слишком длинное сообщение
                                 </span>
                             </form>
+                            <div class="comments__comment-in comment-in">
+                                
+                            </div>
                         </div>
                     </section> 
                 </article>
@@ -117,6 +120,8 @@
             Подвал
         </footer>
     </div>
-    <script src="js/slider.js"></script>
+    <script src="js/entities/comments.js"></script>
+    <script src="js/commentingSystem.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

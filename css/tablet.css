@@ -114,8 +114,50 @@
         margin-right: 16px;
     }
 
+    .comment-in__buttons {
+        gap: 15px;
+    }
+
     .comments__btn {
         font-size: 14px;
+    }
+
+    .comment-in__new-comment {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        column-gap: 30px;
+        row-gap: 15px;
+    }
+
+    .comment-in__avatar {
+        grid-row: span 1;
+    }
+
+    .comment-in__text-comment,
+    .comment-in__buttons {
+        grid-column: span 2;
+    }
+
+    .comment-in__signatures {
+        display: flex;
+        align-items: center;
+    }
+
+    .comment-in__buttons-rating {
+        flex-direction: column;
+    }
+
+    .comment-in__text-comment {
+        font-size: 16px;
+    }
+
+    .comment-in__btn {
+        font-size: 16px;
+    }
+    
+    .comment-in__time {
+        font-size: 12px;
     }
 
 }

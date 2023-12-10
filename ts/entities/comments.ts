@@ -5,13 +5,15 @@ class Comments {
     private _textComment: string | undefined;
     private _displayArea: HTMLElement | null;
     private _div: HTMLElement;
+    private _commentingSystem: CommentingSystem;
 
-    constructor(_userAvatar: string, _userName: string) {
+    constructor(_userAvatar: string, _userName: string, commentingSystem: CommentingSystem) {
         this._userAvatar = _userAvatar;
         this._userName = _userName;
         this._textCommentArea = document.querySelector('.form__textarea');
         this._displayArea = document.querySelector('.comments__comment-in');
         this._div = document.createElement('div');
+        this._commentingSystem = commentingSystem;
     }
 
     private _getComment(): void {
@@ -19,6 +21,7 @@ class Comments {
     }
 
     public displayComment(): void {
+        /* this._commentingSystem.typeOfComment = 'send' */
         this._getComment();
 
         if (typeof this._textComment === 'string' && this._displayArea) {
@@ -32,12 +35,15 @@ class Comments {
             } else {
                 this._displayArea.appendChild(this._div);
             }
+            localStorage.setItem('data', this._div.innerHTML);
+            /* console.log(localStorage.getItem('data')) */
         }
 
         this._clearTextArea();
+        this._commentingSystem.typeOfComment = '';
     }
 
-    private _clearTextArea() {
+    private _clearTextArea(): void {
         if (this._textCommentArea) {
             this._textCommentArea.value = '';
         }
@@ -51,30 +57,30 @@ class Comments {
                 <span class="comment-in__user-name name-user">
                     Максим Авдеенко
                 </span>
-                <span class="comment-in__time">
+                <span class="comment-in__time time-comment">
                     15.01 13:55
                 </span>
             </div>
             <p class="comment-in__text-comment">
                 ${txt}
-            </p>
-            <div class="comment-in__buttons">
-                <button class="comment-in__btn comment-in__btn_execute_answer">
-                    <img class="comment-in__btn-icon-answer" src="images/svg/btn-answer.svg" alt="Icon-answer">
+                </p>
+            <div class="comment-in__buttons buttons-comment">
+                <button class="buttons-comment__btn buttons-comment__btn_execute_answer">
+                    <img class="buttons-comment__btn-icon-answer" src="images/svg/btn-answer.svg" alt="Icon-answer">
                     Ответить
                 </button>
-                <button class="comment-in__btn comment-in__btn_execute_to-favorites">
-                    <img class="comment-in__btn-icon-favorites" src="images/svg/btn-to-favorites.svg" alt="Icon-favorites">
+                <button class="buttons-comment__btn buttons-comment__btn_execute_to-favorites">
+                    <img class="buttons-comment__btn-icon-favorites" src="images/svg/btn-to-favorites.svg" alt="Icon-favorites">
                     В избранное
                 </button>
-                <div class="comment-in__buttons-rating">
-                    <button class="comment-in__btn-rating comment-in__btn-rating_change_decrease">
+                <div class="buttons-comment__buttons-rating">
+                    <button class="buttons-comment__btn-rating buttons-comment__btn-rating_change_decrease">
                         -
                     </button>
-                    <div class="comment-in__counter-rating">
+                    <div class="buttons-comment__counter-rating">
                         0
                     </div>
-                    <button class="comment-in__btn-rating comment-in__btn-rating_change_increase">
+                    <button class="buttons-comment__btn-rating buttons-comment__btn-rating_change_increase">
                         +
                     </button>
                 </div>

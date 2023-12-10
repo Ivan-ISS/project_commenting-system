@@ -48,6 +48,13 @@
         min-height: 50px;
     }
 
+    .form__btn-answer {
+        grid-column: span 2;
+        padding: 15px 107px;
+        font-size: 16px;
+        min-height: 50px;
+    }
+
     .form__warning-mobile {
         display: block;
         grid-column: span 2;
@@ -68,6 +75,21 @@
 /* name--- */    
     .name-user {
         font-size: 14px;
+    }
+
+/* time--- */
+    .time-comment {
+        font-size: 12px;
+    }
+
+/* buttons-comment--- */
+    .buttons-comment__buttons-rating {
+        flex-direction: column;
+    }
+
+    .buttons-comment__btn {
+        font-size: 14px;
+        gap: 10px;
     }
 
 /* aside-------------------------------------------------------------------------------------- */
@@ -137,24 +159,41 @@
         align-items: center;
     }
 
-    .comment-in__buttons-rating {
-        flex-direction: column;
-    }
-
     .comment-in__text-comment {
         font-size: 16px;
     }
 
-    .comment-in__buttons {
-        gap: 15px;
+    .comment-in__answer-comment {
+        grid-column: span 2;
     }
 
-    .comment-in__btn {
-        font-size: 16px;
+    .comment-answer__avatar {
+        grid-row: span 1;
     }
-    
-    .comment-in__time {
-        font-size: 12px;
+
+    .comment-answer__signatures {
+        flex-wrap: wrap;
+    }
+
+    .comment-answer__recipient-name {
+        display: none;
+        font-size: 14px;
+    }
+
+    .comment-answer__recipient-name-mobile {
+        display: flex;
+        font-size: 14px;
+        gap: 15px;
+        align-items: center;
+
+        opacity: 0.4;
+        font-weight: 400;
+        line-height: calc(22 / 18 * 100%);
+    }
+
+    .comment-answer__text-comment {
+        grid-column: span 2;
+        font-size: 16px;
     }
 
 }

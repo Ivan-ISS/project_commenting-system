@@ -38,39 +38,43 @@ class CommentsAnswer {
             });
         }); */
 
-        this.btnAnswer[0].addEventListener('click', (event) => {
-            /* this._btnSendOn?.classList.add('form__btn-answer_display-on') */
+        for (let i = 0; i < this.btnAnswer.length; i++) {
+            this.btnAnswer[i].addEventListener('click', (event) => {
+                /* this._btnSendOn?.classList.add('form__btn-answer_display-on') */
 
-            this._commentingSystem.typeOfComment = 'answer';
-            this._textCommentArea?.scrollIntoView();
-            this._textCommentArea?.focus();
-            
-            const element: HTMLElement = event.currentTarget as HTMLElement;
-            const parentCurrentTarget: HTMLElement | null = element.parentElement;
-            const parentParentCurrentTarget: HTMLElement | null | undefined = parentCurrentTarget?.parentElement;
+                this._commentingSystem.typeOfComment = 'answer';
+                this._textCommentArea?.scrollIntoView();
+                this._textCommentArea?.focus();
+                
+                const element: HTMLElement = event.currentTarget as HTMLElement;
+                const parentCurrentTarget: HTMLElement | null = element.parentElement;
+                const parentParentCurrentTarget: HTMLElement | null | undefined = parentCurrentTarget?.parentElement;
 
-            this._div = document.createElement('div');
-            this._div.className = 'comment-in__answer-comment comment-answer';
-            this._div.innerHTML = 'answer';
+                this._div = document.createElement('div');
+                this._div.className = 'comment-in__answer-comment comment-answer';
+                this._div.innerHTML = 'answer';
 
-            console.log('here');
-            /* this._commentingSystem.typeOfComment = 'send'; */
-            
-            this._btnSend?.addEventListener('click', () => {
-                /* console.log('here'); */
-                this._getComment();
-                /* console.log(this._textComment) */
-                if (typeof this._textComment === 'string') {
-                    if (this._textComment !== '') {
-                        let txt: Text = document.createTextNode(this._textComment);
-                        this._div.innerHTML = this._createContent(txt.nodeValue)
+                console.log('here');
+                /* this._commentingSystem.typeOfComment = 'send'; */
+                
+                this._btnSend?.addEventListener('click', () => {
+                    /* console.log('here'); */
+                    this._getComment();
+                    /* console.log(this._textComment) */
+                    if (typeof this._textComment === 'string') {
+                        if (this._textComment !== '') {
+                            let txt: Text = document.createTextNode(this._textComment);
+                            this._div.innerHTML = this._createContent(txt.nodeValue)
+                        }
+                        parentParentCurrentTarget?.appendChild(this._div);
+                        /* this._div.scrollIntoView(); */
                     }
-                    parentParentCurrentTarget?.appendChild(this._div);
-                }
-                this._commentingSystem.typeOfComment = 'send';
-                this._clearTextArea();
+                    this._commentingSystem.commentsStorage.update();
+                    this._commentingSystem.typeOfComment = 'send';
+                    this._clearTextArea();
+                });
             });
-        });
+        }
     }
 
     private _clearTextArea(): void {

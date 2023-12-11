@@ -35,7 +35,8 @@ class Comments {
             } else {
                 this._displayArea.appendChild(this._div);
             }
-            localStorage.setItem('data', this._div.innerHTML);
+            this._commentingSystem.commentsStorage.update();
+            /* localStorage.setItem('data', this._div.innerHTML); */
             /* console.log(localStorage.getItem('data')) */
         }
 

@@ -1,15 +1,17 @@
 class CommentingSystem {
     public comment: Comments;
     public commentAnswer: CommentsAnswer;
-    private userAvatar: string = 'images/png/avatar-maxim.png';
-    private userName: string = 'Максим Авдеенко';
+    private _userAvatar: string;
+    private _userName: string;
     public typeOfComment: string;
     public commentsStorage: CommentsStorage;
 
-    constructor () {
+    constructor (userName: string, userAvatar: string) {
         this.typeOfComment = '';
-        this.comment = new Comments(this.userAvatar, this.userName, this);
-        this.commentAnswer = new CommentsAnswer(this.userAvatar, this.userName, this);
+        this._userName = userName;
+        this._userAvatar = userAvatar;
+        this.comment = new Comments(this._userAvatar, this._userName, this);
+        this.commentAnswer = new CommentsAnswer(this._userAvatar, this._userName, this);
         this.commentsStorage = new CommentsStorage(this);
     }
 }

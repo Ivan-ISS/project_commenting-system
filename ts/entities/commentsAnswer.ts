@@ -49,28 +49,27 @@ class CommentsAnswer {
                 const element: HTMLElement = event.currentTarget as HTMLElement;
                 const parentCurrentTarget: HTMLElement | null = element.parentElement;
                 const parentParentCurrentTarget: HTMLElement | null | undefined = parentCurrentTarget?.parentElement;
+                let recipientName: string | null | undefined = parentParentCurrentTarget?.querySelector('.comment-in__user-name')?.textContent;
 
                 this._div = document.createElement('div');
                 this._div.className = 'comment-in__answer-comment comment-answer';
                 this._div.innerHTML = 'answer';
-
-                console.log('here');
-                /* this._commentingSystem.typeOfComment = 'send'; */
                 
                 this._btnSend?.addEventListener('click', () => {
-                    /* console.log('here'); */
                     this._getComment();
-                    /* console.log(this._textComment) */
                     if (typeof this._textComment === 'string') {
                         if (this._textComment !== '') {
                             let txt: Text = document.createTextNode(this._textComment);
-                            this._div.innerHTML = this._createContent(txt.nodeValue)
+                            const dateAndTime: string = getTimeAndDate();
+                            console.log(recipientName)
+                            this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar, recipientName as string);
                         }
                         parentParentCurrentTarget?.appendChild(this._div);
                         /* this._div.scrollIntoView(); */
                     }
                     this._commentingSystem.commentsStorage.update();
                     this._commentingSystem.typeOfComment = 'send';
+                    /* recipientName = ''; */
                     this._clearTextArea();
                 });
             });
@@ -83,20 +82,20 @@ class CommentsAnswer {
         }
     }
 
-    private _createContent(txt: string | null): string {
+    private _createContent(txt: string | null, dateAndTime: string, userName: string, userAvatar: string, recipientName: string): string {
         const content: string =
         `
-            <img class="comment-answer__avatar avatar" src="images/png/avatar-maxim.png" alt="Avatar">
+            <img class="comment-answer__avatar avatar" src="${userAvatar}" alt="Avatar">
             <div class="comment-answer__signatures">
                 <span class="comment-answer__user-name name-user">
-                    Максим Авдеенко
+                    ${userName}
                 </span>
                 <span class="comment-answer__recipient-name">
                     <img class="comment-answer__icon-answer" src="images/svg/btn-answer.svg" alt="Icon-answer">
-                    Максим Авдеенко
+                    ${recipientName}
                 </span>
                 <span class="comment-answer__time time-comment">
-                    15.01 13:55
+                    ${dateAndTime}
                 </span>
                 <span class="comment-answer__recipient-name-mobile">
                     <img class="comment-answer__icon-answer" src="images/svg/btn-answer.svg" alt="Icon-answer">

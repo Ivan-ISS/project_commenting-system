@@ -8,7 +8,7 @@ class CommentsStorage {
     }
 
     public update() {
-        localStorage.clear();
+        /* localStorage.clear(); */
         localStorage.setItem('data', this._commentContentAll?.innerHTML as string);
     }
 

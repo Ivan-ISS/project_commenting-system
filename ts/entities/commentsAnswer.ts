@@ -6,7 +6,7 @@ class CommentsAnswer {
     public btnAnswer: HTMLCollectionOf<Element>;
     private _div: HTMLElement;
     private _btnSend: HTMLElement | null;
-    private _btnSendOn: HTMLElement | null;
+    /* private _btnSendOn: HTMLElement | null; */
     private _commentingSystem: CommentingSystem;
 
     constructor(_userAvatar: string, _userName: string, commentingSystem: CommentingSystem) {
@@ -16,7 +16,7 @@ class CommentsAnswer {
         this.btnAnswer = document.getElementsByClassName('buttons-comment__btn_execute_answer');
         this._div = document.createElement('div');
         this._btnSend = document.querySelector('.form__btn');
-        this._btnSendOn = document.querySelector('.form__btn-answer');
+        /* this._btnSendOn = document.querySelector('.form__btn-answer'); */
         this._commentingSystem = commentingSystem;
     }
 

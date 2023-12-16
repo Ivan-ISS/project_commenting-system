@@ -48,23 +48,42 @@
                         <div class="comments__horizontal-line"></div>
                         <ul class="comments__list-menu">
                             <li class="comments__item comments__item_select_total">
-                                <button class="comments__btn">
+                                <button class="comments__btn comments__btn_action_all-comments">
                                     Комментарии
-                                    <span class="">
+                                    <span class="comments__counter">
                                         (0)
                                     </span>
                                 </button>
                             </li>
-                            <li class="comments__item comments__item_select_filter">
-                                <button class="comments__btn">
-                                    По количеству оценок
+                            <li class="comments__item comments__item_select_sort">
+                                <button class="comments__btn comments__btn_action_sort">
+                                    Отсортировать
                                     <svg class="comments__arrow-icon" width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path opacity="0.4" d="M9 15L17.6603 0H0.339746L9 15Z" fill="black"/>
                                     </svg>
                                 </button>
+                                <div class="comments__dropdown-sort-list comments__dropdown-sort-list_show sort-list-dropdown">
+                                    <ul class="sort-list-dropdown__list-sorting">
+                                        <li class="sort-list-dropdown__sort-item sort-list-dropdown__sort-item_checked">
+                                            <button class="sort-list-dropdown__btn sort-list-dropdown__btn_sort_by-date">
+                                                По дате
+                                            </button>
+                                        </li>
+                                        <li class="sort-list-dropdown__sort-item">
+                                            <button class="sort-list-dropdown__btn sort-list-dropdown__btn_sort_by-rating">
+                                                По количеству оценок
+                                            </button>
+                                        </li>
+                                        <li class="sort-list-dropdown__sort-item">
+                                            <button class="sort-list-dropdown__btn sort-list-dropdown__btn_sort_by-answer">
+                                                По количеству ответов
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             <li class="comments__item comments__item_select_favorites">
-                                <button class="comments__btn">
+                                <button class="comments__btn comments__btn_action_favorites">
                                     Избранное
                                     <svg class="comments__heart-icon" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <g opacity="0.4">
@@ -127,6 +146,7 @@
     <script src="js/entities/commentsAnswer.js"></script>
     <script src="js/entities/commentsStorage.js"></script>
     <script src="js/entities/rating.js"></script>
+    <script src="js/entities/sort.js"></script>
     <script src="js/commentingSystem.js"></script>
     <script src="js/index.js"></script>
 </body>

@@ -83,6 +83,7 @@ class CommentsAnswer {
     }
 
     private _createContent(txt: string | null, dateAndTime: string, userName: string, userAvatar: string, recipientName: string): string {
+        this._commentingSystem.comment.changeNumberOfComments();
         const content: string =
         `
             <img class="comment-answer__avatar avatar" src="${userAvatar}" alt="Avatar">
@@ -114,9 +115,7 @@ class CommentsAnswer {
                     <button class="buttons-comment__btn-rating buttons-comment__btn-rating_change_decrease">
                         -
                     </button>
-                    <div class="buttons-comment__counter-rating">
-                        0
-                    </div>
+                    <div class="buttons-comment__counter-rating">0</div>
                     <button class="buttons-comment__btn-rating buttons-comment__btn-rating_change_increase">
                         +
                     </button>

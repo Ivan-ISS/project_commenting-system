@@ -5,6 +5,8 @@ class Comments {
     private _textComment: string | undefined;
     private _displayArea: HTMLElement | null;
     private _div: HTMLElement;
+    public numberOfComments: number;
+    public _counterComments: HTMLElement | null;
     private _commentingSystem: CommentingSystem;
 
     constructor(_userAvatar: string, _userName: string, commentingSystem: CommentingSystem) {
@@ -13,7 +15,14 @@ class Comments {
         this._textCommentArea = document.querySelector('.form__textarea');
         this._displayArea = document.querySelector('.comments__comment-in');
         this._div = document.createElement('div');
+        this._counterComments = document.querySelector('.comments__counter');
         this._commentingSystem = commentingSystem;
+
+        if (localStorage.getItem('numberOfComments')) {
+            this.numberOfComments = localStorage.getItem('numberOfComments') as any as number;
+        } else {
+            this.numberOfComments = 0;
+        }
     }
 
     private _getComment(): void {
@@ -33,12 +42,13 @@ class Comments {
             
             if (this._displayArea.hasChildNodes()) {
                 this._displayArea.insertBefore(this._div, this._displayArea.firstElementChild)
+                this.changeNumberOfComments();
             } else {
                 this._displayArea.appendChild(this._div);
+                this.changeNumberOfComments();
             }
             this._commentingSystem.commentsStorage.update();
             /* localStorage.setItem('data', this._div.innerHTML); */
-            /* console.log(localStorage.getItem('data')) */
         }
 
         this._clearTextArea();
@@ -49,6 +59,16 @@ class Comments {
         if (this._textCommentArea) {
             this._textCommentArea.value = '';
         }
+    }
+
+    public changeNumberOfComments() {
+        this.numberOfComments++
+        console.log(this.numberOfComments, '', this._counterComments)
+        if (this._counterComments) {
+            this._counterComments.textContent = `(${<string><any>this.numberOfComments})`;
+        }
+        localStorage.setItem('numberOfComments', this.numberOfComments as any as string);
+        /* this._commentingSystem.commentsStorage.update(); */
     }
 
     private _createContent(txt: string | null, dateAndTime: string, userName: string, userAvatar: string): string {
@@ -79,9 +99,7 @@ class Comments {
                     <button class="buttons-comment__btn-rating buttons-comment__btn-rating_change_decrease">
                         -
                     </button>
-                    <div class="buttons-comment__counter-rating">
-                        0
-                    </div>
+                    <div class="buttons-comment__counter-rating">0</div>
                     <button class="buttons-comment__btn-rating buttons-comment__btn-rating_change_increase">
                         +
                     </button>

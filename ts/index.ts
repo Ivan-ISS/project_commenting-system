@@ -51,8 +51,11 @@ commentingSystem.commentsStorage.insertCommentHistory();
 for (let i = 0; i < 1000; i++) { localStorage.removeItem(`${i}`); }
 
 const btnSend: HTMLElement | null = document.querySelector('.form__btn');
-const btnIncreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_increase');
-const btnDecreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_decrease');
+let btnIncreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_increase');
+let btnDecreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_decrease');
+const btnSort = document.querySelector('.comments__btn_action_sort');
+const btnSortByRating = document.querySelector('.sort-list-dropdown__btn_sort_by-rating');
+const commentsAll: Element | null = document.querySelector('.comments__btn_action_all-comments');
 
 //---Обработка нажатий на кнопки "отправить" и "ответить"
 btnSend?.addEventListener('click', () => {
@@ -64,6 +67,7 @@ btnSend?.addEventListener('click', () => {
     if (commentingSystem.typeOfComment === 'answer' || commentingSystem.typeOfComment === '') {
         commentingSystem.commentAnswer.displayCommentAnswer();
     }
+
 });
 
 //---Активация кнопок изменения рейтинга комментария
@@ -97,3 +101,20 @@ for (let i = 0; i < btnDecreaseRating.length; i++) {
         commentingSystem.rating.decreaseRating(event.currentTarget, <number><any>localStorage.getItem(`${i}`));
     });
 }
+
+
+//--------------------------------------------------ФИЛЬТР КОММЕНТАРИЕВ--------------------------------------------------
+//---Обработка нажатий на кнопку фильтра комментариев
+btnSort?.addEventListener('click', () => {
+    commentingSystem.sorting.showSortList();
+});
+
+//---Обработка нажатий на кнопку фильтра комментариев
+btnSortByRating?.addEventListener('click', () => {
+    commentingSystem.sorting.sortByRating();
+});
+
+//---Обработка нажатий на кнопку всех комментариев
+commentsAll?.addEventListener('click', () => {
+    commentingSystem.sorting.showAllComments();
+});

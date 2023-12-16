@@ -54,6 +54,9 @@ class CommentsAnswer {
                 this._div = document.createElement('div');
                 this._div.className = 'comment-in__answer-comment comment-answer';
                 this._div.innerHTML = 'answer';
+
+                console.log(recipientName)
+                localStorage.setItem('recipientName', recipientName as string);
                 
                 this._btnSend?.addEventListener('click', () => {
                     this._getComment();
@@ -61,8 +64,7 @@ class CommentsAnswer {
                         if (this._textComment !== '') {
                             let txt: Text = document.createTextNode(this._textComment);
                             const dateAndTime: string = getTimeAndDate();
-                            console.log(recipientName)
-                            this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar, recipientName as string);
+                            this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar, localStorage.getItem('recipientName') as string);
                         }
                         parentParentCurrentTarget?.appendChild(this._div);
                         /* this._div.scrollIntoView(); */

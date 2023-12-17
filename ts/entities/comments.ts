@@ -36,8 +36,9 @@ class Comments {
         if (typeof this._textComment === 'string' && this._displayArea) {
             const txt: Text = document.createTextNode(this._textComment);
             const dateAndTime: string = getTimeAndDate();
+            const timeInMilliseconds: number = Date.now();
             this._div = document.createElement('div');
-            this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar)
+            this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar, timeInMilliseconds)
             this._div.className = 'comment-in__new-comment';
             
             if (this._displayArea.hasChildNodes()) {
@@ -71,7 +72,7 @@ class Comments {
         /* this._commentingSystem.commentsStorage.update(); */
     }
 
-    private _createContent(txt: string | null, dateAndTime: string, userName: string, userAvatar: string): string {
+    private _createContent(txt: string | null, dateAndTime: string, userName: string, userAvatar: string, timeInMilliseconds: number): string {
         const content: string =
         `
             <img class="comment-in__avatar avatar" src="${userAvatar}" alt="Avatar">
@@ -82,6 +83,7 @@ class Comments {
                 <span class="comment-in__time time-comment">
                     ${dateAndTime}
                 </span>
+                <span class="comment-in__time-milliseconds">${timeInMilliseconds}</span>
             </div>
             <p class="comment-in__text-comment">
                 ${txt}

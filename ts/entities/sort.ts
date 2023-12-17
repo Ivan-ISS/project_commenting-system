@@ -60,7 +60,7 @@ class Sorting {
 
         for (let i = 0; i < arrComments.length; i++) {
             /* console.log(arrComments[i]) */
-            this._displayArea?.appendChild(arrComments[i])
+            this._displayArea?.appendChild(arrComments[i]);
         }
     }
 
@@ -74,7 +74,6 @@ class Sorting {
         for (let i = 0; i < this._comments.length; i++) {
             /* console.log(this._comments[i], ' ', this._comments[i].querySelector('.comment-in__time-milliseconds')?.textContent) */
             time = this._comments[i].querySelector('.comment-in__time-milliseconds')?.textContent as any as number;
-            /* console.log(time) */
 
             // Ищем позицию для вставки оценки в порядке убывания в массив
             let position = 0;
@@ -100,16 +99,12 @@ class Sorting {
         }
 
         for (let i = 0; i < arrComments.length; i++) {
-            /* console.log(arrComments[i]) */
             this._displayArea?.appendChild(arrComments[i]);
         }
     }
 
     public showAllComments() {
-        if (this._displayArea) {
-            this._displayArea.innerHTML = '';
-        }
-
-        this._commentingSystem.commentsStorage.insertCommentHistory();
+        this.sortByDate();
+        this.showSortList();
     }
 }

@@ -56,6 +56,7 @@ let btnDecreaseRating = document.getElementsByClassName('buttons-comment__btn-ra
 const btnSort = document.querySelector('.comments__btn_action_sort');
 const btnSortByRating = document.querySelector('.sort-list-dropdown__btn_sort_by-rating');
 const btnSortByDate = document.querySelector('.sort-list-dropdown__btn_sort_by-date');
+const btnSortByAnswer = document.querySelector('.sort-list-dropdown__btn_sort_by-answer');
 const commentsAll: Element | null = document.querySelector('.comments__btn_action_all-comments');
 
 //---Обработка нажатий на кнопки "отправить" и "ответить"
@@ -121,6 +122,11 @@ btnSortByRating?.addEventListener('click', () => {
 //---Обработка нажатий на кнопку сортировки комментариев по дате
 btnSortByDate?.addEventListener('click', () => {
     commentingSystem.sorting.sortByDate();
+});
+
+//---Обработка нажатий на кнопку сортировки комментариев по кол-ву ответов
+btnSortByAnswer?.addEventListener('click', () => {
+    commentingSystem.sorting.sortByNumberAnswer();
 });
 
 //---Обработка нажатий на кнопку всех комментариев

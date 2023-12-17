@@ -62,7 +62,7 @@
         font-size: 12px;
         font-weight: 400;
         line-height: calc(17 / 14 * 100%);
-        /* opacity: 0; */
+        opacity: 0;
     }
 
 /* avatar--- */
@@ -97,6 +97,7 @@
 
 .main__container {
     margin-right: 15px;
+    padding-right: 0;
 }
 
 /* main-block--------------------------------------------------------------------------------- */

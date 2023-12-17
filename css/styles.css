@@ -69,7 +69,7 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: calc(17 / 14 * 100%);
-    /* opacity: 0; */
+    opacity: 0;
 }
 
 .form__textarea {
@@ -286,7 +286,8 @@ body {
 .main__container {
     display: flex;
     min-height: 100vh;
-    margin-right: 129px;
+    padding-right: 129px;
+    /* margin-right: 129px; */
     align-self: stretch;
 }
 

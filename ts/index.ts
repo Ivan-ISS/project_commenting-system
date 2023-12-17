@@ -50,7 +50,7 @@ const commentingSystem: CommentingSystem = new CommentingSystem(userName, userAv
 commentingSystem.commentsStorage.insertCommentHistory();
 for (let i = 0; i < 1000; i++) { localStorage.removeItem(`${i}`); }
 
-const btnSend: HTMLElement | null = document.querySelector('.form__btn');
+const btnSend: HTMLButtonElement | null = document.querySelector('.form__btn');
 let btnIncreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_increase');
 let btnDecreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_decrease');
 const btnSort = document.querySelector('.comments__btn_action_sort');
@@ -58,16 +58,52 @@ const btnSortByRating = document.querySelector('.sort-list-dropdown__btn_sort_by
 const btnSortByDate = document.querySelector('.sort-list-dropdown__btn_sort_by-date');
 const btnSortByAnswer = document.querySelector('.sort-list-dropdown__btn_sort_by-answer');
 const commentsAll: Element | null = document.querySelector('.comments__btn_action_all-comments');
+const textarea: HTMLTextAreaElement = <HTMLTextAreaElement>document.querySelector('.form__textarea');
+const simbolCounter: HTMLElement | null = document.querySelector('.form__symbol-counter');
+const messageWarning: HTMLElement | null = document.querySelector('.form__warning-desktop');
+const messageWarningMobile: HTMLElement | null = document.querySelector('.form__warning-mobile');
+
+//---Обработка ввода текста в textarea
+textarea?.addEventListener('input', () => {
+    let count = textarea.value.length;
+    if (simbolCounter && messageWarning && btnSend && messageWarningMobile) {
+        console.log(count);
+        simbolCounter.textContent = `${count}/1000`;
+        if (count > 1000) {
+            simbolCounter.style.color = 'rgb(255, 0, 0)';
+            simbolCounter.style.opacity = '1';
+            messageWarning.style.opacity = '1';
+            messageWarningMobile.style.opacity = '1';
+        } else {
+            simbolCounter.style.color = 'rgba(0, 0, 0, 0.40)';
+            messageWarning.style.opacity = '0';
+            messageWarningMobile.style.opacity = '0';
+        }
+        if (count >= 1 && count <= 1000) {
+            btnSend.disabled = false;
+            btnSend.style.background = '#abd873';
+        } else {
+            btnSend.disabled = true;
+            btnSend.style.background = '#a1a1a1';
+        }
+    }
+})
 
 //---Обработка нажатий на кнопки "отправить" и "ответить"
 btnSend?.addEventListener('click', () => {
     
     if (commentingSystem.typeOfComment === 'send' || commentingSystem.typeOfComment === '') {
         commentingSystem.comment.displayComment();
+        if (simbolCounter) simbolCounter.textContent = 'Макс. 1000 символов';
+        btnSend.disabled = true;
+        btnSend.style.background = '#a1a1a1';
     }
 
     if (commentingSystem.typeOfComment === 'answer' || commentingSystem.typeOfComment === '') {
         commentingSystem.commentAnswer.displayCommentAnswer();
+        if (simbolCounter) simbolCounter.textContent = 'Макс. 1000 символов';
+        btnSend.disabled = true;
+        btnSend.style.background = '#a1a1a1';
     }
 
 });

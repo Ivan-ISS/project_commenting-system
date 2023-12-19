@@ -7,6 +7,7 @@ class CommentingSystem {
     public commentsStorage: CommentsStorage;
     public rating: Rating;
     public sorting: Sorting;
+    public favorites: Favorites;
 
     constructor (userName: string, userAvatar: string) {
         this.typeOfComment = '';
@@ -17,5 +18,6 @@ class CommentingSystem {
         this.commentsStorage = new CommentsStorage(this);
         this.rating = new Rating(this);
         this.sorting = new Sorting(this);
+        this.favorites = new Favorites(this);
     }
 }

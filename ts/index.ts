@@ -48,6 +48,8 @@ if (userNameElement && userAvatarElement) {
 const commentingSystem: CommentingSystem = new CommentingSystem(userName, userAvatar);
 
 commentingSystem.commentsStorage.insertCommentHistory();
+commentingSystem.sorting.sortByDate();
+commentingSystem.sorting.showSortList();
 for (let i = 0; i < 1000; i++) { localStorage.removeItem(`${i}`); }
 
 const btnSend: HTMLButtonElement | null = document.querySelector('.form__btn');
@@ -62,6 +64,8 @@ const textarea: HTMLTextAreaElement = <HTMLTextAreaElement>document.querySelecto
 const simbolCounter: HTMLElement | null = document.querySelector('.form__symbol-counter');
 const messageWarning: HTMLElement | null = document.querySelector('.form__warning-desktop');
 const messageWarningMobile: HTMLElement | null = document.querySelector('.form__warning-mobile');
+const btnToFavorites: HTMLCollectionOf<Element> = document.getElementsByClassName('buttons-comment__btn_execute_to-favorites');
+const btnFavorites: HTMLButtonElement | null = document.querySelector('.comments__btn_action_favorites');
 
 //---Обработка ввода текста в textarea
 textarea?.addEventListener('input', () => {
@@ -168,4 +172,19 @@ btnSortByAnswer?.addEventListener('click', () => {
 //---Обработка нажатий на кнопку всех комментариев
 commentsAll?.addEventListener('click', () => {
     commentingSystem.sorting.showAllComments();
+});
+
+//--------------------------------------------------ФИЛЬТР КОММЕНТАРИЕВ--------------------------------------------------
+
+//---Обработка нажатий на кнопки "В избранное"
+for (let i = 0; i < btnToFavorites.length; i++) {
+    btnToFavorites[i].addEventListener('click', (event) => {
+        const btn: HTMLButtonElement = <HTMLButtonElement>event.currentTarget;
+        commentingSystem.favorites.toFavorites(event.currentTarget);
+    });
+}
+
+//---Обработка нажатий на кнопки "Избранное"
+btnFavorites?.addEventListener('click', () => {
+    commentingSystem.favorites.filterFavorites();
 });

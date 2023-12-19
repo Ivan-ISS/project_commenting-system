@@ -20,6 +20,7 @@ class Sorting {
     }
 
     public sortByRating() {
+        this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let rating: number;
         let arrRating: number[] = [];
@@ -65,6 +66,7 @@ class Sorting {
     }
 
     public sortByDate() {
+        this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let time: number;
         let arrTime: number[] = [];
@@ -104,6 +106,7 @@ class Sorting {
     }
 
     public sortByNumberAnswer() {
+        this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let numberOfAnswer: number;
         let arrNumberOfAnswer: number[] = [];
@@ -144,6 +147,7 @@ class Sorting {
     }
 
     public showAllComments() {
+        this._commentingSystem.commentsStorage.insertCommentHistory();
         this.sortByDate();
         this.showSortList();
     }

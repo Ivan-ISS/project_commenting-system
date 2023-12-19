@@ -2,11 +2,13 @@ class CommentsStorage {
     private _commentContentAll: HTMLElement | null;
     private _commentingSystem: CommentingSystem;
     private _counterComments: HTMLElement | null;
+    private _form: HTMLFormElement | null;
 
     constructor(commentingSystem: CommentingSystem) {
         this._commentContentAll = document.querySelector('.comments__comment-in');
         this._commentingSystem = commentingSystem;
         this._counterComments = document.querySelector('.comments__counter');
+        this._form = document.querySelector('.comments__form');
     }
 
     public update() {
@@ -15,6 +17,10 @@ class CommentsStorage {
     }
 
     public insertCommentHistory() {
+        if (this._form) {
+            this._form.style.display = 'grid';
+        }
+
         if (localStorage.getItem('data')) {
             if (this._commentContentAll) {
                 this._commentContentAll.innerHTML = localStorage.getItem('data') as string;

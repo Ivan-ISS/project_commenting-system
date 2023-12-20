@@ -30,11 +30,11 @@ class Sorting {
         for (let i = 0; i < this._comments.length; i++) {
             /* console.log(this._comments[i], ' ', this._comments[i].querySelector('.buttons-comment__counter-rating')?.textContent) */
             rating = this._comments[i].querySelector('.buttons-comment__counter-rating')?.textContent as any as number;
-            /* console.log(rating) */
+            console.log(rating > -3)
 
             // Ищем позицию для вставки оценки в порядке убывания в массив
             let position = 0;
-            while (position < arrRating.length && rating < arrRating[position]) {
+            while (position < arrRating.length && rating < +arrRating[position]) {
                 position++
             }
 
@@ -44,7 +44,7 @@ class Sorting {
 
         }
 
-        /* console.log(arrComments) */
+        console.log(arrRating)
 
         // Ставим галочку напроотив выбранной позиции
         this.showSortList();

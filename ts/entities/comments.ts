@@ -49,6 +49,7 @@ class Comments {
                 this.changeNumberOfComments();
             }
             this._commentingSystem.commentsStorage.update();
+            /* this._commentingSystem.favorites.toFavorites(); */
             /* localStorage.setItem('data', this._div.innerHTML); */
         }
 

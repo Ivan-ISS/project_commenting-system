@@ -1,79 +1,107 @@
 class Rating {
     private _btnIncrease: HTMLButtonElement | null;
     private _btnDecrease: HTMLButtonElement | null;
+    private _btnIncreaseRating: HTMLCollectionOf<Element>;
+    private _btnDecreaseRating: HTMLCollectionOf<Element>;
     private _commentingSystem: CommentingSystem;
-    private _initialValueRating: { value: number; };
+    private _initialValueRating: number | null;
 
     constructor(commentingSystem: CommentingSystem) {
-        this._btnIncrease = document.querySelector('.buttons-comment__btn-rating_change_increase');
-        this._btnDecrease = document.querySelector('.buttons-comment__btn-rating_change_increase');
+        this._btnIncrease = null;
+        this._btnDecrease = null;
+        this._btnIncreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_increase');
+        this._btnDecreaseRating = document.getElementsByClassName('buttons-comment__btn-rating_change_decrease');
         this._commentingSystem = commentingSystem;
-        this._initialValueRating = {value: NaN};
+        this._initialValueRating = null;
     }
 
-    public increaseRating(target: EventTarget | null, initialValueRating: number) {
-        this._btnIncrease = target as HTMLButtonElement;
-        const ratingElement: HTMLElement | null = this._btnIncrease.previousElementSibling as HTMLElement;
-        this._btnDecrease = ratingElement?.previousElementSibling as HTMLButtonElement;
+    public increaseRating(/* target: EventTarget | null, initialValueRating: number */) {
+        /* if (!this._btnIncrease?.disabled) */
+        for (let i = 0; i < this._btnIncreaseRating.length; i++) {
+            this._btnIncreaseRating[i].addEventListener('click', (event) => {
+                this._btnIncrease = <HTMLButtonElement>event.currentTarget;
+                if (!localStorage.getItem(`${i}`)) {
+                    localStorage.setItem(`${i}`, this._btnIncrease.previousElementSibling?.textContent as string); // Кладем в localStorage изначальное значение рейтинга
+                }
 
-        let counter: number = <number><any>ratingElement?.textContent;
-        counter++;
+                this._initialValueRating = <number><any>localStorage.getItem(`${i}`);
 
-        if (counter < 0 && ratingElement) {
-            ratingElement.style.color = '#F00';
+                /* this._btnIncrease = event.currentTarget as HTMLButtonElement; */
+                const ratingElement: HTMLElement | null = this._btnIncrease.previousElementSibling as HTMLElement;
+                this._btnDecrease = ratingElement?.previousElementSibling as HTMLButtonElement;
+
+                let counter: number = <number><any>ratingElement?.textContent;
+                counter++;
+
+                if (counter < 0 && ratingElement) {
+                    ratingElement.style.color = '#F00';
+                }
+
+                if (counter >= 0 && ratingElement) {
+                    ratingElement.style.color = '#8AC540';
+                }
+                console.log(this._btnIncrease?.disabled)
+                if (ratingElement) {
+                    ratingElement.textContent = `${counter}`;
+                }
+
+                this._commentingSystem.commentsStorage.update();
+
+                /* console.log(counter) */
+                if (counter > this._initialValueRating) {
+                    this._btnIncrease.disabled = true;
+                }
+
+                this._btnDecrease.disabled = false;
+
+                /* console.log(initialValueRating) */
+            })
         }
-
-        if (counter >= 0 && ratingElement) {
-            ratingElement.style.color = '#8AC540';
-        }
-
-        if (ratingElement) {
-            ratingElement.textContent = `${counter}`;
-        }
-
-        this._commentingSystem.commentsStorage.update();
-
-        /* console.log(counter) */
-        if (counter > initialValueRating) {
-            this._btnIncrease.disabled = true;
-        }
-
-        this._btnDecrease.disabled = false;
-
-        /* console.log(initialValueRating) */
     }
 
-    public decreaseRating(target: EventTarget | null, initialValueRating: number) {
-        this._btnDecrease = target as HTMLButtonElement;
-        const ratingElement: HTMLElement | null = this._btnDecrease.nextElementSibling as HTMLElement;
-        this._btnIncrease = ratingElement?.nextElementSibling as HTMLButtonElement;
+    public decreaseRating(/* target: EventTarget | null, initialValueRating: number */) {
+        /* if (!this._btnDecrease?.disabled) */
+        for (let i = 0; i < this._btnDecreaseRating.length; i++) {
+            this._btnDecreaseRating[i].addEventListener('click', (event) => {
+                this._btnDecrease = <HTMLButtonElement>event.currentTarget;
+                if (!localStorage.getItem(`${i}`)) {
+                    localStorage.setItem(`${i}`, this._btnDecrease.nextElementSibling?.textContent as string); // Кладем в localStorage изначальное значение рейтинга
+                }
 
-        let counter: number = <number><any>ratingElement?.textContent;
+                this._initialValueRating = <number><any>localStorage.getItem(`${i}`);
 
-        counter--;
+                /* this._btnDecrease = event.currentTarget as HTMLButtonElement; */
+                const ratingElement: HTMLElement | null = this._btnDecrease.nextElementSibling as HTMLElement;
+                this._btnIncrease = ratingElement?.nextElementSibling as HTMLButtonElement;
 
-        if (counter < 0 && ratingElement) {
-            ratingElement.style.color = '#F00';
+                let counter: number = <number><any>ratingElement?.textContent;
+
+                counter--;
+
+                if (counter < 0 && ratingElement) {
+                    ratingElement.style.color = '#F00';
+                }
+
+                if (counter >= 0 && ratingElement) {
+                    ratingElement.style.color = '#8AC540';
+                }
+
+                if (ratingElement) {
+                    ratingElement.textContent = `${counter}`;
+                }
+
+                this._commentingSystem.commentsStorage.update();
+
+
+                if (counter < this._initialValueRating) {
+                    /* console.log(counter) */
+                    this._btnDecrease.disabled = true;
+                }
+
+                this._btnIncrease.disabled = false;
+
+                /* console.log(initialValueRating) */
+            })
         }
-
-        if (counter >= 0 && ratingElement) {
-            ratingElement.style.color = '#8AC540';
-        }
-
-        if (ratingElement) {
-            ratingElement.textContent = `${counter}`;
-        }
-
-        this._commentingSystem.commentsStorage.update();
-
-
-        if (counter < initialValueRating) {
-            /* console.log(counter) */
-            this._btnDecrease.disabled = true;
-        }
-
-        this._btnIncrease.disabled = false;
-
-        /* console.log(initialValueRating) */
     }
 }

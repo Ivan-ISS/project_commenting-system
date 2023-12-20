@@ -440,6 +440,11 @@ body {
     display: none;
 }
 
+/* .comment-in__text-comment {
+    word-wrap: break-word;
+    max-width: fit-content;
+} */
+
 /* .comment-in__time {
     opacity: 0.4;
     font-size: 14px;

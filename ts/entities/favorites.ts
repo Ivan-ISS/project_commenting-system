@@ -5,6 +5,7 @@ class Favorites {
     private _displayArea: HTMLElement | null;
     private _form: HTMLFormElement | null;
     private _commentsAnswer: HTMLCollectionOf<Element>;
+    private _toFavorites: HTMLCollectionOf<Element>;
 
     constructor(commentingSystem: CommentingSystem) {
         this._btnToFavorites = null;
@@ -12,22 +13,27 @@ class Favorites {
         this._commentsAnswer = document.getElementsByClassName('comment-answer');
         this._displayArea = document.querySelector('.comments__comment-in');
         this._form = document.querySelector('.comments__form');
+        this._toFavorites = document.getElementsByClassName('buttons-comment__btn_execute_to-favorites');
         this._commentingSystem = commentingSystem;
     }
 
-    public toFavorites (target: EventTarget | null) {
-        /* console.log(target); */
-        this._btnToFavorites = <HTMLElement>target;
+    public toFavorites (/* target: EventTarget | null */) {
+        for (let i = 0; i < this._toFavorites.length; i++) {
+            this._toFavorites[i].addEventListener('click', (event) => {
+                /* console.log(target); */
+                this._btnToFavorites = <HTMLElement>event.currentTarget;
 
-        /* console.log(this._btnToFavorites.innerHTML.replace(/\s/g, '')) */
+                /* console.log(this._btnToFavorites.innerHTML.replace(/\s/g, '')) */
 
-        // Если еще не в избранном, то добавить. Если уже в избранном, то убрать
-        if (this._btnToFavorites.innerHTML.replace(/\s/g, '') == `<imgclass="buttons-comment__btn-icon-favorites"src="images/svg/btn-to-favorites.svg"alt="Icon-favorites">Визбранное`) {
-            this._btnToFavorites.innerHTML = `<img class="buttons-comment__btn-icon-favorites" src="images/svg/btn-from-favorites.svg" alt="Icon-favorites">В избранном`;
-        } else {
-            this._btnToFavorites.innerHTML = `<img class="buttons-comment__btn-icon-favorites" src="images/svg/btn-to-favorites.svg" alt="Icon-favorites">В избранное`;
-        }
-        this._commentingSystem.commentsStorage.update();
+                // Если еще не в избранном, то добавить. Если уже в избранном, то убрать
+                if (this._btnToFavorites.innerHTML.replace(/\s/g, '') == `<imgclass="buttons-comment__btn-icon-favorites"src="images/svg/btn-to-favorites.svg"alt="Icon-favorites">Визбранное`) {
+                    this._btnToFavorites.innerHTML = `<img class="buttons-comment__btn-icon-favorites" src="images/svg/btn-from-favorites.svg" alt="Icon-favorites">В избранном`;
+                } else {
+                    this._btnToFavorites.innerHTML = `<img class="buttons-comment__btn-icon-favorites" src="images/svg/btn-to-favorites.svg" alt="Icon-favorites">В избранное`;
+                }
+                this._commentingSystem.commentsStorage.update();
+            })
+        }    
     }
 
     public filterFavorites() {

@@ -64,7 +64,7 @@ const textarea: HTMLTextAreaElement = <HTMLTextAreaElement>document.querySelecto
 const simbolCounter: HTMLElement | null = document.querySelector('.form__symbol-counter');
 const messageWarning: HTMLElement | null = document.querySelector('.form__warning-desktop');
 const messageWarningMobile: HTMLElement | null = document.querySelector('.form__warning-mobile');
-const btnToFavorites: HTMLCollectionOf<Element> = document.getElementsByClassName('buttons-comment__btn_execute_to-favorites');
+/* const btnToFavorites: HTMLCollectionOf<Element> = document.getElementsByClassName('buttons-comment__btn_execute_to-favorites'); */
 const btnFavorites: HTMLButtonElement | null = document.querySelector('.comments__btn_action_favorites');
 
 //---Обработка ввода текста в textarea
@@ -124,11 +124,11 @@ for (let i = 0; i < btnDecreaseRating.length; i++) {
 }
 
 //---Обработка нажатий на кнопки увеличения и уменьшения рейтинга комментария
-for (let i = 0; i < btnIncreaseRating.length; i++) {
+/* for (let i = 0; i < btnIncreaseRating.length; i++) {
     btnIncreaseRating[i].addEventListener('click', (event) => {
         const btn: HTMLButtonElement = <HTMLButtonElement>event.currentTarget;
         if (!localStorage.getItem(`${i}`)) {
-            localStorage.setItem(`${i}`, btn.previousElementSibling?.textContent as string); // Кладем в localStorage изначальное значение рейтинга
+            localStorage.setItem(`${i}`, btn.previousElementSibling?.textContent as string);
         }
         commentingSystem.rating.increaseRating(event.currentTarget, <number><any>localStorage.getItem(`${i}`));
     });
@@ -138,11 +138,11 @@ for (let i = 0; i < btnDecreaseRating.length; i++) {
     btnDecreaseRating[i].addEventListener('click', (event) => {
         const btn: HTMLButtonElement = <HTMLButtonElement>event.currentTarget;
         if (!localStorage.getItem(`${i}`)) {
-            localStorage.setItem(`${i}`, btn.nextElementSibling?.textContent as string); // Кладем в localStorage изначальное значение рейтинга
+            localStorage.setItem(`${i}`, btn.nextElementSibling?.textContent as string);
         }
         commentingSystem.rating.decreaseRating(event.currentTarget, <number><any>localStorage.getItem(`${i}`));
     });
-}
+} */
 
 
 //--------------------------------------------------СОРТИРОВКА КОММЕНТАРИЕВ--------------------------------------------------
@@ -175,14 +175,14 @@ commentsAll?.addEventListener('click', () => {
 });
 
 //--------------------------------------------------ФИЛЬТР КОММЕНТАРИЕВ--------------------------------------------------
-
+/* commentingSystem.favorites.toFavorites(); */
 //---Обработка нажатий на кнопки "В избранное"
-for (let i = 0; i < btnToFavorites.length; i++) {
+/* for (let i = 0; i < btnToFavorites.length; i++) {
     btnToFavorites[i].addEventListener('click', (event) => {
         const btn: HTMLButtonElement = <HTMLButtonElement>event.currentTarget;
         commentingSystem.favorites.toFavorites(event.currentTarget);
     });
-}
+} */
 
 //---Обработка нажатий на кнопки "Избранное"
 btnFavorites?.addEventListener('click', () => {

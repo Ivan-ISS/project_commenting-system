@@ -25,6 +25,9 @@ class CommentsStorage {
             if (this._commentContentAll) {
                 this._commentContentAll.innerHTML = localStorage.getItem('data') as string;
                 this._commentingSystem.commentAnswer.displayCommentAnswer();
+                this._commentingSystem.favorites.toFavorites();
+                this._commentingSystem.rating.increaseRating();
+                this._commentingSystem.rating.decreaseRating();
             }
         }
 

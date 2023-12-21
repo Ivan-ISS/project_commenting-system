@@ -32,7 +32,18 @@ function random (min: number, max: number): number {
     return result
 }
 
-let randomNumber: number = random(0, users.length - 1);
+const matchСhecking = (number: number): number => {
+    if (number == <number><any>localStorage.getItem('random')) {
+        number = random (0, users.length - 1)
+        return matchСhecking(number)
+    } else {
+        console.log(number)
+        localStorage.setItem('random', `${number}`);
+        return number
+    }
+}
+
+let randomNumber: number = matchСhecking(random(0, users.length - 1));
 let userName: string = users[randomNumber].name;
 let userAvatar: string = users[randomNumber].avatar;
 

@@ -9,6 +9,7 @@ class Sorting {
     private _iconArrowUp: HTMLElement | null;
     private _target: HTMLElement | null;
     private _arrComments: Element[];
+    private _inscription: HTMLElement | null;
 
     constructor(commentingSystem: CommentingSystem) {
         this._sortList = document.querySelector('.comments__dropdown-sort-list');
@@ -19,11 +20,13 @@ class Sorting {
         this._allSortItem = document.querySelectorAll('.sort-list-dropdown__sort-item');
         this._iconArrowDown = document.querySelector('.comments__arrow-icon-down');
         this._iconArrowUp = document.querySelector('.comments__arrow-icon-up');
+        this._inscription = document.querySelector('.comments__btn-inscription');
         this._target = null;
         this._arrComments = [];
 
         // Слушатели событий click для кнопок направления сортировки-------------------------------
         this._iconArrowDown?.addEventListener('click', () => {
+            this.showSortList();
             if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуоценок') {   
                 this._contentAreaPreparation();    
                 for (let i = this._arrComments.length - 1; i >= 0; i--) {
@@ -33,6 +36,7 @@ class Sorting {
         })
 
         this._iconArrowUp?.addEventListener('click', () => {
+            this.showSortList();
             if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуоценок') {
                 this._contentAreaPreparation();
                 for (let i = 0; i < this._arrComments.length; i++) {
@@ -42,6 +46,7 @@ class Sorting {
         })
 
         this._iconArrowDown?.addEventListener('click', () => {
+            this.showSortList();
             if (this._target?.textContent?.replace(/\s/g, '') === 'Подате') {
                 this._contentAreaPreparation();
                 for (let i = this._arrComments.length - 1; i >= 0; i--) {
@@ -51,6 +56,7 @@ class Sorting {
         })
 
         this._iconArrowUp?.addEventListener('click', () => {
+            this.showSortList();
             if (this._target?.textContent?.replace(/\s/g, '') === 'Подате') {
                 this._contentAreaPreparation();
                 for (let i = 0; i < this._arrComments.length; i++) {
@@ -60,6 +66,7 @@ class Sorting {
         })
 
         this._iconArrowDown?.addEventListener('click', () => {
+            this.showSortList();
             if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуответов') {
                 this._contentAreaPreparation();
                 for (let i = this._arrComments.length - 1; i >= 0; i--) {
@@ -69,6 +76,7 @@ class Sorting {
         })
 
         this._iconArrowUp?.addEventListener('click', () => {
+            this.showSortList();
             if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуответов') {
                 this._contentAreaPreparation();
                 for (let i = 0; i < this._arrComments.length; i++) {
@@ -129,6 +137,10 @@ class Sorting {
 
         this._target = target as HTMLElement;
         this._arrComments = arrComments;
+
+        if (this._inscription) {
+            this._inscription.textContent = this._target.textContent;
+        }
     }
 
     public sortByDate(target?: HTMLElement) {
@@ -172,6 +184,10 @@ class Sorting {
 
         this._target = target as HTMLElement;
         this._arrComments = arrComments;
+
+        if (this._inscription && this._target) {
+            this._inscription.textContent = this._target.textContent;
+        }
     }
 
     public sortByNumberAnswer(target?: HTMLElement) {
@@ -216,12 +232,19 @@ class Sorting {
 
         this._target = target as HTMLElement;
         this._arrComments = arrComments;
+
+        if (this._inscription) {
+            this._inscription.textContent = this._target.textContent;
+        }
     }
 
     public showAllComments() {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         this.sortByDate();
         this.showSortList();
+        if (this._inscription) {
+            this._inscription.textContent = 'Отсортировать';
+        }
     }
 
     private _contentAreaPreparation() {

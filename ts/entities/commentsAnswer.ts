@@ -28,17 +28,6 @@ class CommentsAnswer {
 
     public displayCommentAnswer(): void {
         this.btnAnswer = document.getElementsByClassName('buttons-comment__btn_execute_answer');
-        console.log('здесь')
-        /* const btnAnswerArray: Element[] = Array.from(this.btnAnswer);
-        console.log(btnAnswerArray) */
-
-        /* btnAnswerArray.forEach((btn, index) => {
-            btn.addEventListener('click', (event) => {
-                console.log(btn);
-                console.log(btnAnswerArray[index]);
-                console.log(event.currentTarget);
-            });
-        }); */
 
         for (let i = 0; i < this.btnAnswer.length; i++) {
             this.btnAnswer[i].addEventListener('click', (event) => {
@@ -68,6 +57,7 @@ class CommentsAnswer {
                             const dateAndTime: string = getTimeAndDate();
                             this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar, localStorage.getItem('recipientName') as string);
                         }
+                        console.log(this._div)
                         parentParentCurrentTarget?.appendChild(this._div);
                         /* this._div.scrollIntoView(); */
                     }

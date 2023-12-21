@@ -160,6 +160,9 @@ for (let i = 0; i < btnDecreaseRating.length; i++) {
 //---Обработка нажатий на кнопку сортировки комментариев
 btnSort?.addEventListener('click', () => {
     commentingSystem.sorting.showSortList();
+    btnSort.classList.add('comments__btn-selected');
+    commentsAll?.classList.remove('comments__btn-selected');
+    btnFavorites?.classList.remove('comments__btn-selected');
 });
 
 //---Обработка нажатий на кнопку сортировки комментариев по оценке
@@ -183,6 +186,9 @@ btnSortByAnswer?.addEventListener('click', (event) => {
 //---Обработка нажатий на кнопку всех комментариев
 commentsAll?.addEventListener('click', () => {
     commentingSystem.sorting.showAllComments();
+    commentsAll.classList.add('comments__btn-selected');
+    btnSort?.classList.remove('comments__btn-selected');
+    btnFavorites?.classList.remove('comments__btn-selected');
 });
 
 //--------------------------------------------------ФИЛЬТР КОММЕНТАРИЕВ--------------------------------------------------
@@ -198,4 +204,7 @@ commentsAll?.addEventListener('click', () => {
 //---Обработка нажатий на кнопки "Избранное"
 btnFavorites?.addEventListener('click', () => {
     commentingSystem.favorites.filterFavorites();
+    btnFavorites.classList.add('comments__btn-selected');
+    btnSort?.classList.remove('comments__btn-selected');
+    commentsAll?.classList.remove('comments__btn-selected');
 });

@@ -152,21 +152,21 @@ btnSort?.addEventListener('click', () => {
 });
 
 //---Обработка нажатий на кнопку сортировки комментариев по оценке
-btnSortByRating?.addEventListener('click', () => {
-    commentingSystem.sorting.sortByRating();
+btnSortByRating?.addEventListener('click', (event) => {
+    commentingSystem.sorting.sortByRating(event.currentTarget as HTMLElement);
     /* if (btnSort) {
         btnSort.textContent = btnSortByRating.textContent;
     } */
 });
 
 //---Обработка нажатий на кнопку сортировки комментариев по дате
-btnSortByDate?.addEventListener('click', () => {
-    commentingSystem.sorting.sortByDate();
+btnSortByDate?.addEventListener('click', (event) => {
+    commentingSystem.sorting.sortByDate(event.currentTarget as HTMLElement);
 });
 
 //---Обработка нажатий на кнопку сортировки комментариев по кол-ву ответов
-btnSortByAnswer?.addEventListener('click', () => {
-    commentingSystem.sorting.sortByNumberAnswer();
+btnSortByAnswer?.addEventListener('click', (event) => {
+    commentingSystem.sorting.sortByNumberAnswer(event.currentTarget as HTMLElement);
 });
 
 //---Обработка нажатий на кнопку всех комментариев

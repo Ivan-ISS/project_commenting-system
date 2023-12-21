@@ -49,7 +49,10 @@ class Comments {
                 this.changeNumberOfComments();
             }
             this._commentingSystem.commentsStorage.update();
-            /* this._commentingSystem.favorites.toFavorites(); */
+            if (this._displayArea) {
+                this._displayArea.innerHTML = '';
+            }
+            this._commentingSystem.commentsStorage.insertCommentHistory();
             /* localStorage.setItem('data', this._div.innerHTML); */
         }
 

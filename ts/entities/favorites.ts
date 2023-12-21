@@ -20,10 +20,9 @@ class Favorites {
     public toFavorites (/* target: EventTarget | null */) {
         for (let i = 0; i < this._toFavorites.length; i++) {
             this._toFavorites[i].addEventListener('click', (event) => {
-                /* console.log(target); */
                 this._btnToFavorites = <HTMLElement>event.currentTarget;
 
-                /* console.log(this._btnToFavorites.innerHTML.replace(/\s/g, '')) */
+                console.log(this._btnToFavorites.innerHTML.replace(/\s/g, ''))
 
                 // Если еще не в избранном, то добавить. Если уже в избранном, то убрать
                 if (this._btnToFavorites.innerHTML.replace(/\s/g, '') == `<imgclass="buttons-comment__btn-icon-favorites"src="images/svg/btn-to-favorites.svg"alt="Icon-favorites">Визбранное`) {

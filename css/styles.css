@@ -401,6 +401,10 @@ body {
     padding-bottom: 2px;
 }
 
+.comments__arrow-icon-show {
+    display: none;
+}
+
 .comments__item_select_sort {
     position: relative;
     /* min-width: 229px; */

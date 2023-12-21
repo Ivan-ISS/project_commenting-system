@@ -4,6 +4,7 @@ class CommentsAnswer {
     private _textComment: string | undefined;
     private _textCommentArea: HTMLTextAreaElement | null;
     public btnAnswer: HTMLCollectionOf<Element>;
+    private _displayArea: HTMLElement | null;
     private _div: HTMLElement;
     private _btnSend: HTMLElement | null;
     /* private _btnSendOn: HTMLElement | null; */
@@ -13,6 +14,7 @@ class CommentsAnswer {
         this._userAvatar = _userAvatar;
         this._userName = _userName;
         this._textCommentArea = document.querySelector('.form__textarea');
+        this._displayArea = document.querySelector('.comments__comment-in');
         this.btnAnswer = document.getElementsByClassName('buttons-comment__btn_execute_answer');
         this._div = document.createElement('div');
         this._btnSend = document.querySelector('.form__btn');

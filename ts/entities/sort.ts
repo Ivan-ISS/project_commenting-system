@@ -5,6 +5,10 @@ class Sorting {
     private _commentsAll: HTMLElement | null;
     private _commentingSystem: CommentingSystem;
     private _allSortItem: NodeListOf<Element>;
+    private _iconArrowDown: HTMLElement | null;
+    private _iconArrowUp: HTMLElement | null;
+    private _target: HTMLElement | null;
+    private _arrComments: Element[];
 
     constructor(commentingSystem: CommentingSystem) {
         this._sortList = document.querySelector('.comments__dropdown-sort-list');
@@ -13,13 +17,72 @@ class Sorting {
         this._commentsAll = document.querySelector('.comments__btn_action_all-comments');
         this._commentingSystem = commentingSystem;
         this._allSortItem = document.querySelectorAll('.sort-list-dropdown__sort-item');
+        this._iconArrowDown = document.querySelector('.comments__arrow-icon-down');
+        this._iconArrowUp = document.querySelector('.comments__arrow-icon-up');
+        this._target = null;
+        this._arrComments = [];
+
+        // Слушатели событий click для кнопок направления сортировки-------------------------------
+        this._iconArrowDown?.addEventListener('click', () => {
+            if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуоценок') {   
+                this._contentAreaPreparation();    
+                for (let i = this._arrComments.length - 1; i >= 0; i--) {
+                    this._displayArea?.appendChild(this._arrComments[i]);
+                }
+            }
+        })
+
+        this._iconArrowUp?.addEventListener('click', () => {
+            if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуоценок') {
+                this._contentAreaPreparation();
+                for (let i = 0; i < this._arrComments.length; i++) {
+                    this._displayArea?.appendChild(this._arrComments[i]);
+                }
+            }
+        })
+
+        this._iconArrowDown?.addEventListener('click', () => {
+            if (this._target?.textContent?.replace(/\s/g, '') === 'Подате') {
+                this._contentAreaPreparation();
+                for (let i = this._arrComments.length - 1; i >= 0; i--) {
+                    this._displayArea?.appendChild(this._arrComments[i]);
+                }
+            }
+        })
+
+        this._iconArrowUp?.addEventListener('click', () => {
+            if (this._target?.textContent?.replace(/\s/g, '') === 'Подате') {
+                this._contentAreaPreparation();
+                for (let i = 0; i < this._arrComments.length; i++) {
+                    this._displayArea?.appendChild(this._arrComments[i]);
+                }
+            }
+        })
+
+        this._iconArrowDown?.addEventListener('click', () => {
+            if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуответов') {
+                this._contentAreaPreparation();
+                for (let i = this._arrComments.length - 1; i >= 0; i--) {
+                    this._displayArea?.appendChild(this._arrComments[i]);
+                }
+            }
+        })
+
+        this._iconArrowUp?.addEventListener('click', () => {
+            if (this._target?.textContent?.replace(/\s/g, '') === 'Поколичествуответов') {
+                this._contentAreaPreparation();
+                for (let i = 0; i < this._arrComments.length; i++) {
+                    this._displayArea?.appendChild(this._arrComments[i]);
+                }
+            }
+        })
     }
 
     public showSortList() {
         this._sortList?.classList.toggle('comments__dropdown-sort-list_show');
     }
 
-    public sortByRating() {
+    public sortByRating(target?: HTMLElement) {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let rating: number;
@@ -63,9 +126,12 @@ class Sorting {
             /* console.log(arrComments[i]) */
             this._displayArea?.appendChild(arrComments[i]);
         }
+
+        this._target = target as HTMLElement;
+        this._arrComments = arrComments;
     }
 
-    public sortByDate() {
+    public sortByDate(target?: HTMLElement) {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let time: number;
@@ -103,9 +169,12 @@ class Sorting {
         for (let i = 0; i < arrComments.length; i++) {
             this._displayArea?.appendChild(arrComments[i]);
         }
+
+        this._target = target as HTMLElement;
+        this._arrComments = arrComments;
     }
 
-    public sortByNumberAnswer() {
+    public sortByNumberAnswer(target?: HTMLElement) {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let numberOfAnswer: number;
@@ -144,11 +213,23 @@ class Sorting {
         for (let i = 0; i < arrComments.length; i++) {
             this._displayArea?.appendChild(arrComments[i]);
         }
+
+        this._target = target as HTMLElement;
+        this._arrComments = arrComments;
     }
 
     public showAllComments() {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         this.sortByDate();
         this.showSortList();
+    }
+
+    private _contentAreaPreparation() {
+        this._iconArrowDown?.classList.toggle('comments__arrow-icon-show');
+        this._iconArrowUp?.classList.toggle('comments__arrow-icon-show');
+
+        if (this._displayArea) {
+            this._displayArea.innerHTML = '';
+        }
     }
 }

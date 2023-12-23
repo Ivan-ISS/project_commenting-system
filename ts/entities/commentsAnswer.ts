@@ -9,6 +9,7 @@ class CommentsAnswer {
     private _btnSend: HTMLElement | null;
     /* private _btnSendOn: HTMLElement | null; */
     private _commentingSystem: CommentingSystem;
+    private _commentContentAll: HTMLElement | null;
 
     constructor(_userAvatar: string, _userName: string, commentingSystem: CommentingSystem) {
         this._userAvatar = _userAvatar;
@@ -20,6 +21,7 @@ class CommentsAnswer {
         this._btnSend = document.querySelector('.form__btn');
         /* this._btnSendOn = document.querySelector('.form__btn-answer'); */
         this._commentingSystem = commentingSystem;
+        this._commentContentAll = document.querySelector('.comments__comment-in');
     }
 
     private _getComment(): void {
@@ -44,9 +46,9 @@ class CommentsAnswer {
 
                 this._div = document.createElement('div');
                 this._div.className = 'comment-in__answer-comment comment-answer';
-                this._div.innerHTML = 'answer';
+                /* this._div.innerHTML = 'answer'; */
 
-                console.log(recipientName)
+                /* console.log(recipientName) */
                 localStorage.setItem('recipientName', recipientName as string);
                 
                 this._btnSend?.addEventListener('click', () => {
@@ -57,11 +59,16 @@ class CommentsAnswer {
                             const dateAndTime: string = getTimeAndDate();
                             this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar, localStorage.getItem('recipientName') as string);
                         }
-                        console.log(this._div)
+                        /* console.log(this._div) */
                         parentParentCurrentTarget?.appendChild(this._div);
+                        console.log(parentParentCurrentTarget)
                         /* this._div.scrollIntoView(); */
                     }
                     this._commentingSystem.commentsStorage.update();
+                    /* if (this._displayArea) {
+                        this._displayArea.innerHTML = '';
+                    }
+                    this._commentingSystem.commentsStorage.insertCommentHistory(); */
                     this._commentingSystem.typeOfComment = 'send';
                     /* recipientName = ''; */
                     this._clearTextArea();

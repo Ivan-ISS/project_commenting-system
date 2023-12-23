@@ -13,6 +13,7 @@ class CommentsStorage {
 
     public update() {
         /* localStorage.clear(); */
+        /* console.log(this._commentContentAll?.innerHTML) */
         localStorage.setItem('data', this._commentContentAll?.innerHTML as string);
     }
 

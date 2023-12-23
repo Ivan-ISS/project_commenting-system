@@ -7,7 +7,6 @@ class CommentsAnswer {
     private _displayArea: HTMLElement | null;
     private _div: HTMLElement;
     private _btnSend: HTMLElement | null;
-    /* private _btnSendOn: HTMLElement | null; */
     private _commentingSystem: CommentingSystem;
     private _commentContentAll: HTMLElement | null;
 
@@ -19,7 +18,6 @@ class CommentsAnswer {
         this.btnAnswer = document.getElementsByClassName('buttons-comment__btn_execute_answer');
         this._div = document.createElement('div');
         this._btnSend = document.querySelector('.form__btn');
-        /* this._btnSendOn = document.querySelector('.form__btn-answer'); */
         this._commentingSystem = commentingSystem;
         this._commentContentAll = document.querySelector('.comments__comment-in');
     }
@@ -33,7 +31,6 @@ class CommentsAnswer {
 
         for (let i = 0; i < this.btnAnswer.length; i++) {
             this.btnAnswer[i].addEventListener('click', (event) => {
-                /* this._btnSendOn?.classList.add('form__btn-answer_display-on') */
 
                 this._commentingSystem.typeOfComment = 'answer';
                 this._textCommentArea?.scrollIntoView();
@@ -46,9 +43,7 @@ class CommentsAnswer {
 
                 this._div = document.createElement('div');
                 this._div.className = 'comment-in__answer-comment comment-answer';
-                /* this._div.innerHTML = 'answer'; */
 
-                /* console.log(recipientName) */
                 localStorage.setItem('recipientName', recipientName as string);
                 
                 this._btnSend?.addEventListener('click', () => {
@@ -59,18 +54,10 @@ class CommentsAnswer {
                             const dateAndTime: string = getTimeAndDate();
                             this._div.innerHTML = this._createContent(txt.nodeValue, dateAndTime, this._userName, this._userAvatar, localStorage.getItem('recipientName') as string);
                         }
-                        /* console.log(this._div) */
                         parentParentCurrentTarget?.appendChild(this._div);
-                        console.log(parentParentCurrentTarget)
-                        /* this._div.scrollIntoView(); */
                     }
                     this._commentingSystem.commentsStorage.update();
-                    /* if (this._displayArea) {
-                        this._displayArea.innerHTML = '';
-                    }
-                    this._commentingSystem.commentsStorage.insertCommentHistory(); */
                     this._commentingSystem.typeOfComment = 'send';
-                    /* recipientName = ''; */
                     this._clearTextArea();
                 });
             });

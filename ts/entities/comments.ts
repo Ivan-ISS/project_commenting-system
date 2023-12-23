@@ -30,7 +30,6 @@ class Comments {
     }
 
     public displayComment(): void {
-        /* this._commentingSystem.typeOfComment = 'send' */
         this._getComment();
 
         if (typeof this._textComment === 'string' && this._displayArea) {
@@ -53,7 +52,6 @@ class Comments {
                 this._displayArea.innerHTML = '';
             }
             this._commentingSystem.commentsStorage.insertCommentHistory();
-            /* localStorage.setItem('data', this._div.innerHTML); */
         }
 
         this._clearTextArea();
@@ -68,12 +66,10 @@ class Comments {
 
     public changeNumberOfComments() {
         this.numberOfComments++
-        console.log(this.numberOfComments, '', this._counterComments)
         if (this._counterComments) {
             this._counterComments.textContent = `(${<string><any>this.numberOfComments})`;
         }
         localStorage.setItem('numberOfComments', this.numberOfComments as any as string);
-        /* this._commentingSystem.commentsStorage.update(); */
     }
 
     private _createContent(txt: string | null, dateAndTime: string, userName: string, userAvatar: string, timeInMilliseconds: number): string {

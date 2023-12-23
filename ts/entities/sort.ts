@@ -99,9 +99,7 @@ class Sorting {
 
         // Перебираем каждый комментарий и записываем его оценку в переменную rating
         for (let i = 0; i < this._comments.length; i++) {
-            /* console.log(this._comments[i], ' ', this._comments[i].querySelector('.buttons-comment__counter-rating')?.textContent) */
             rating = this._comments[i].querySelector('.buttons-comment__counter-rating')?.textContent as any as number;
-            console.log(rating > -3)
 
             // Ищем позицию для вставки оценки в порядке убывания в массив
             let position = 0;
@@ -131,7 +129,6 @@ class Sorting {
         }
 
         for (let i = 0; i < arrComments.length; i++) {
-            /* console.log(arrComments[i]) */
             this._displayArea?.appendChild(arrComments[i]);
         }
 
@@ -201,7 +198,6 @@ class Sorting {
         for (let i = 0; i < this._comments.length; i++) {
             console.log(this._comments[i], ' ', this._comments[i].querySelectorAll('.comment-answer')?.length)
             numberOfAnswer = this._comments[i].querySelectorAll('.comment-answer')?.length;
-            console.log(numberOfAnswer)
 
             // Ищем позицию для вставки кол-ва ответов в порядке убывания в массив
             let position = 0;

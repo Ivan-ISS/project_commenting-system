@@ -15,8 +15,7 @@ class Rating {
         this._initialValueRating = null;
     }
 
-    public increaseRating(/* target: EventTarget | null, initialValueRating: number */) {
-        /* if (!this._btnIncrease?.disabled) */
+    public increaseRating() {
         for (let i = 0; i < this._btnIncreaseRating.length; i++) {
             this._btnIncreaseRating[i].addEventListener('click', (event) => {
                 this._btnIncrease = <HTMLButtonElement>event.currentTarget;
@@ -25,8 +24,6 @@ class Rating {
                 }
 
                 this._initialValueRating = <number><any>localStorage.getItem(`${i}`);
-
-                /* this._btnIncrease = event.currentTarget as HTMLButtonElement; */
                 const ratingElement: HTMLElement | null = this._btnIncrease.previousElementSibling as HTMLElement;
                 this._btnDecrease = ratingElement?.previousElementSibling as HTMLButtonElement;
 
@@ -47,20 +44,16 @@ class Rating {
 
                 this._commentingSystem.commentsStorage.update();
 
-                /* console.log(counter) */
                 if (counter > this._initialValueRating) {
                     this._btnIncrease.disabled = true;
                 }
 
                 this._btnDecrease.disabled = false;
-
-                /* console.log(initialValueRating) */
             })
         }
     }
 
-    public decreaseRating(/* target: EventTarget | null, initialValueRating: number */) {
-        /* if (!this._btnDecrease?.disabled) */
+    public decreaseRating() {
         for (let i = 0; i < this._btnDecreaseRating.length; i++) {
             this._btnDecreaseRating[i].addEventListener('click', (event) => {
                 this._btnDecrease = <HTMLButtonElement>event.currentTarget;
@@ -69,8 +62,6 @@ class Rating {
                 }
 
                 this._initialValueRating = <number><any>localStorage.getItem(`${i}`);
-
-                /* this._btnDecrease = event.currentTarget as HTMLButtonElement; */
                 const ratingElement: HTMLElement | null = this._btnDecrease.nextElementSibling as HTMLElement;
                 this._btnIncrease = ratingElement?.nextElementSibling as HTMLButtonElement;
 
@@ -92,15 +83,11 @@ class Rating {
 
                 this._commentingSystem.commentsStorage.update();
 
-
                 if (counter < this._initialValueRating) {
-                    /* console.log(counter) */
                     this._btnDecrease.disabled = true;
                 }
 
                 this._btnIncrease.disabled = false;
-
-                /* console.log(initialValueRating) */
             })
         }
     }

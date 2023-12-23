@@ -86,11 +86,11 @@ class Sorting {
         })
     }
 
-    public showSortList() {
+    public showSortList(): void {
         this._sortList?.classList.toggle('comments__dropdown-sort-list_show');
     }
 
-    public sortByRating(target?: HTMLElement) {
+    public sortByRating(target?: HTMLElement): void {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let rating: number;
@@ -112,8 +112,6 @@ class Sorting {
             arrComments.splice(position, 0, this._comments[i]);
 
         }
-
-        console.log(arrRating)
 
         // Ставим галочку напроотив выбранной позиции
         this.showSortList();
@@ -140,7 +138,7 @@ class Sorting {
         }
     }
 
-    public sortByDate(target?: HTMLElement) {
+    public sortByDate(target?: HTMLElement): void {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let time: number;
@@ -187,7 +185,7 @@ class Sorting {
         }
     }
 
-    public sortByNumberAnswer(target?: HTMLElement) {
+    public sortByNumberAnswer(target?: HTMLElement): void {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         // Объявляем вспомогательные переменные и массивы
         let numberOfAnswer: number;
@@ -234,7 +232,7 @@ class Sorting {
         }
     }
 
-    public showAllComments() {
+    public showAllComments(): void {
         this._commentingSystem.commentsStorage.insertCommentHistory();
         this.sortByDate();
         this.showSortList();
@@ -243,7 +241,7 @@ class Sorting {
         }
     }
 
-    private _contentAreaPreparation() {
+    private _contentAreaPreparation(): void {
         this._iconArrowDown?.classList.toggle('comments__arrow-icon-show');
         this._iconArrowUp?.classList.toggle('comments__arrow-icon-show');
 

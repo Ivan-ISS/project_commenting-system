@@ -11,11 +11,11 @@ class CommentsStorage {
         this._form = document.querySelector('.comments__form');
     }
 
-    public update() {
+    public update(): void {
         localStorage.setItem('data', this._commentContentAll?.innerHTML as string);
     }
 
-    public insertCommentHistory() {
+    public insertCommentHistory(): void {
         if (this._form) {
             this._form.style.display = 'grid';
         }

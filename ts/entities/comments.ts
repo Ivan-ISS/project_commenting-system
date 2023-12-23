@@ -64,7 +64,7 @@ class Comments {
         }
     }
 
-    public changeNumberOfComments() {
+    public changeNumberOfComments(): void {
         this.numberOfComments++
         if (this._counterComments) {
             this._counterComments.textContent = `(${<string><any>this.numberOfComments})`;

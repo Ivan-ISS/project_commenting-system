@@ -15,7 +15,7 @@ class Rating {
         this._initialValueRating = null;
     }
 
-    public increaseRating() {
+    public increaseRating(): void {
         for (let i = 0; i < this._btnIncreaseRating.length; i++) {
             this._btnIncreaseRating[i].addEventListener('click', (event) => {
                 this._btnIncrease = <HTMLButtonElement>event.currentTarget;
@@ -53,7 +53,7 @@ class Rating {
         }
     }
 
-    public decreaseRating() {
+    public decreaseRating(): void {
         for (let i = 0; i < this._btnDecreaseRating.length; i++) {
             this._btnDecreaseRating[i].addEventListener('click', (event) => {
                 this._btnDecrease = <HTMLButtonElement>event.currentTarget;

@@ -17,7 +17,7 @@ class Favorites {
         this._commentingSystem = commentingSystem;
     }
 
-    public toFavorites (/* target: EventTarget | null */) {
+    public toFavorites (): void {
         for (let i = 0; i < this._toFavorites.length; i++) {
             this._toFavorites[i].addEventListener('click', (event) => {
                 this._btnToFavorites = <HTMLElement>event.currentTarget;
@@ -33,7 +33,7 @@ class Favorites {
         }    
     }
 
-    public filterFavorites() {
+    public filterFavorites(): void {
         this._comments = document.getElementsByClassName('comment-in__new-comment');
         let arrComments: Element[] = [];
 

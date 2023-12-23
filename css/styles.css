@@ -19,10 +19,6 @@ a {
     text-decoration: none;
 }
 
-/* img {
-    vertical-align: top;
-} */
-
 html,
 body {
     height: 100%;
@@ -291,18 +287,6 @@ body {
     align-self: stretch;
 }
 
-.main__aside {
-
-}
-
-.main__main-block {
-
-}
-
-.main-block__body-comments {
-
-}
-
 /* aside-------------------------------------------------------------------------------------- */
 
 .aside {
@@ -450,69 +434,6 @@ body {
     display: none;
 }
 
-/* .comment-in__text-comment {
-    word-wrap: break-word;
-    max-width: fit-content;
-} */
-
-/* .comment-in__time {
-    opacity: 0.4;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: calc(17 / 14 * 100%);
-    white-space: nowrap;
-} */
-
-/* .comment-in__buttons {
-    display: flex;
-    gap: 30px;
-}
-
-.comment-in__counter-rating {
-    color: #8AC540;
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.comment-in__btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: none;
-    font-family: Inter;
-    opacity: 0.4;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: calc(22 / 18 * 100%);
-    cursor: pointer;
-}
-
-.comment-in__buttons-rating {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.comment-in__btn-rating {
-    background: rgba(0, 0, 0, 0.10);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-family: Inter;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: calc(22 / 18 * 100%);
-}
-
-.comment-in__btn-rating_change_increase {
-    color: #8AC540;
-}
-
-.comment-in__btn-rating_change_decrease {
-    color: #F00;
-} */
-
 .comment-in__answer-comment {
     grid-column: 2;
 
@@ -549,7 +470,3 @@ body {
 }
 
 /* footer------------------------------------------------------------------------------------- */
-
-.footer {
-    
-}

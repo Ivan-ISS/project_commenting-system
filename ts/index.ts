@@ -25,6 +25,10 @@ const users: { name: string; avatar: string }[] = [
     { name: 'Джунбокс3000', avatar: './images/png/avatar-junebox.png' },
     { name: 'Алексей_1994b', avatar: './images/png/avatar-alexei.png' },
     { name: 'Мистер_душнила', avatar: './images/png/avatar-choking.png' },
+    { name: 'Студент', avatar: './images/png/avatar-student.png' },
+    { name: 'Мультяшка', avatar: './images/png/avatar-cartoon.png' },
+    { name: 'Смайл', avatar: './images/png/avatar-smile.png' },
+    { name: 'Весельчак', avatar: './images/png/avatar-funny.png' },
   ];
 
 function random (min: number, max: number): number {
